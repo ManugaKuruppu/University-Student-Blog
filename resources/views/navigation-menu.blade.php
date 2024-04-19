@@ -11,7 +11,7 @@
                 <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
                     {{ __('menu.blog') }}
                 </x-nav-link>
-                <x-nav-link href="{{ route('event.event') }}" :active="request()->routeIs('event.event')">
+                <x-nav-link href="{{ route('event.events') }}" :active="request()->routeIs('event.events')">
                     {{ __('menu.event') }}
                 </x-nav-link>
                 <x-nav-link href="{{ route('questions.index') }}" :active="request()->routeIs('questions.index')">

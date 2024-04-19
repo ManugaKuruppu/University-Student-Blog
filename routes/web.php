@@ -25,7 +25,7 @@ Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
-Route::get('/event', [EventController::class, 'event'])->name('event.event');
+Route::get('/event', [EventController::class, 'event'])->name('event.events');
 
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
 Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');

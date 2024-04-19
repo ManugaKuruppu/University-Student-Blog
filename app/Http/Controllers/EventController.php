@@ -26,4 +26,11 @@ class EventController extends Controller
                 'event' => Event::take(5)->get()
             ]);
     }
+
+    public function events(Request $request)
+    {
+        $events = Event::all(); // Fetch all events from the database
+
+        return view('event', compact('events'));
+    }
 }

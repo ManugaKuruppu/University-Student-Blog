@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Question;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -30,6 +31,10 @@ class QuestionController extends Controller
 
         // Create a new question using the validated data
         $question = new Question($validated);
+
+        // Associate the question with the currently authenticated user
+        $question->user_id = Auth::id();
+
         $question->save();
 
         // Redirect to a specific route, could be the list of questions

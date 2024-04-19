@@ -73,33 +73,29 @@ $(document).ready(function() {
     $("#demoEvoCalendar").evoCalendar({
         format: "MM dd, yyyy",
         titleFormat: "MM",
-        calendarEvents: [{
-            id: "d8jai7s",
-            name: "Author's Birthday",
-            description: "Author's note: Thank you for using EvoCalendar! :)",
-            date: "February/15/1999",
-            type: "birthday",
-            everyYear: !0
-        }, {
-            id: "sKn89hi",
-            name: "1-Week Coding Bootcamp",
-            description: "Lorem ipsum dolor sit amet.",
-            badge: "5-day event",
-            date: [ today.getMonth() + 1 + "/" + week_date.start + "/" + today.getFullYear(), today.getMonth() + 1 + "/" + week_date.end + "/" + today.getFullYear() ],
-            type: "event",
-            everyYear: !0
-        }, {
-            id: "in8bha4",
-            name: "Holiday #2",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            date: today,
-            type: "holiday"
-        }, {
-            id: "in8bha4",
-            name: "Event #2",
-            date: today,
-            type: "event"
-        }]
+        calendarEvents: events.map(function(event) {
+            if (Array.isArray(event.date)) {
+                // If the event has a date range
+                return {
+                    id: event.id,
+                    name: event.name,
+                    description: event.description,
+                    badge: event.badge, // If you have a badge for the event
+                    date: event.date, // Array containing the start and end dates
+                    type: event.type,
+                    everyYear: event.everyYear
+                };
+            } else {
+                // If the event has a single date
+                return {
+                    id: event.id,
+                    name: event.name,
+                    description: event.description,
+                    date: event.date,
+                    type: event.type
+                };
+            }
+        })
     });
     $("[data-set-theme]").click(function(b) {
         a(b.target);
