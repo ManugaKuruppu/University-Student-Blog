@@ -13,7 +13,7 @@
     function redirectToCreatePage() {
         // Assuming the base URL is http://127.0.0.1:8000/
         const baseUrl = window.location.origin;
-        const createPostUrl = baseUrl + '/admin/posts/create';
+        const createPostUrl = baseUrl + '/posts/make'; // Update the URL to match your route
 
         // Redirect to the create post page
         window.location.href = createPostUrl;

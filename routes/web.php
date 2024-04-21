@@ -25,6 +25,8 @@ Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
+Route::get('/posts/make', [PostController::class, 'make'])->name('posts.make');
+
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 Route::get('/events', [EventController::class, 'index'])->name('event.index');

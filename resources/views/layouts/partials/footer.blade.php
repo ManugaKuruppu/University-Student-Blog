@@ -1,25 +1,17 @@
-<footer class="flex flex-wrap items-center justify-between px-4 py-4 text-sm border-t border-gray-100 ">
-{{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">--}}
+<footer class="flex flex-wrap items-center justify-between px-4 py-4 text-sm border-t border-gray-100">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
         footer {
-            background-color: white; /* Change to your desired background color */
-            color: white;
-            padding: 1.5rem 0; /* Adjust padding as needed */
+            background-color: white;
+            color: black;
+            padding: 1.5rem 0;
         }
 
-        /* Center the content horizontally */
-        .container {
+        .container2 {
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        /* Logo Styles */
-        .logo {
-            /* Add your logo styles here */
-            /* Example: width, height, margin, etc. */
         }
 
         /* Contact Us Styles */
@@ -40,7 +32,7 @@
             margin-right: 1rem;
         }
 
-        a{
+        a {
             color: black;
         }
 
@@ -48,12 +40,9 @@
         a:hover {
             color: #ddd; /* Change to your desired hover color */
         }
-
-        /*i {*/
-        /*    background-color: black;*/
-        /*}*/
     </style>
-    <div class="container mx-auto flex justify-between items-center">
+
+    <div class="container2 mx-auto flex justify-between items-center">
         <!-- Logo -->
         <div>
             <img src="{{ asset('img/logonew.png') }}" alt="Logo" style="width: 200px;">
