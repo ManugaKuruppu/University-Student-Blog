@@ -13,7 +13,7 @@ class PostPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->isAdmin() || $user->isEditor();
+        return $user->isAdmin() || $user->isSTUDENT();
     }
 
     /**
@@ -21,7 +21,7 @@ class PostPolicy
      */
     public function view(User $user, Post $post): bool
     {
-        return $user->isAdmin() || $user->isEditor() || $user->isSTUDENT() || $user->isTeacher() || $user->isUser();
+        return $user->isAdmin() || $user->isSTUDENT() || $user->isTeacher() || $user->isUser();
     }
 
     /**
@@ -29,7 +29,8 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->isAdmin() || $user->isEditor() || $user->isSTUDENT() || $user->isTeacher() || $user->isUser();
+//        return $user->isAdmin() || $user->isSTUDENT() || $user->isTeacher() || $user->isUser();
+        return True;
     }
 
     /**
@@ -37,7 +38,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        return $user->isAdmin() || $user->isEditor();
+        return $user->isAdmin();
     }
 
     /**

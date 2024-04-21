@@ -25,13 +25,21 @@ Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
-Route::get('/event', [EventController::class, 'event'])->name('event.events');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+Route::get('/events', [EventController::class, 'index'])->name('event.index');
 
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
+
 Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
+
 Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
+
 Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
+
 Route::post('/questions/{question}/answers', [AnswerController::class, 'store'])->name('answers.store');
+
+Route::delete('answers/{answer}', [AnswerController::class, 'destroy'])->name('answers.destroy');
 
 
 

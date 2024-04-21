@@ -1,5 +1,6 @@
-<x-app-layout title="Create a Question">
-    <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+<x-app-layout>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <div class="container mt-5">
         <form method="POST" action="{{ route('questions.store') }}">
             @csrf
             <div>

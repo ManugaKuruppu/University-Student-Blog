@@ -14,11 +14,16 @@ class Question extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['user_id','title', 'description'];
 
     public function answers()
     {
         return $this->hasMany(Answer::class);
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
 

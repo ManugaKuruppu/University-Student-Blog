@@ -17,20 +17,45 @@ class EventController extends Controller
             'latestEvent' => Event::published()->latest('published_at')->take(9)->get()
         ]);
     }
+//
+//    public function event()
+//    {
+//        return view('events.index');
+//    }
+//
+//    public function events(Request $request)
+//    {
+//        $events = Event::all(); // Fetch all events from the database
+//
+//        return view('events.index')
+//            ->with('events', $events)
+//            ->with('events_json', $events->toJson());
+//    }
 
-    public function event()
+//    public function getEvents()
+//    {
+//        $events = Event::all(); // Fetch all events from the database
+//        return response()->json($events); // Return events as JSON
+//    }
+
+//    public function calendar()
+//    {
+//        return view('calendar');
+//    }
+//
+//    public function events()
+//    {
+//        $events = Event::all(); // Fetch all events from the database
+//        return response()->json($events);
+//    }
+
+    public function index()
     {
-        return view('events.index',
+        // Retrieve events from the database
+        $events = Event::all();
 
-            [
-                'event' => Event::take(5)->get()
-            ]);
+        // Pass events data to the view
+        return view('events.index', compact('events'));
     }
 
-    public function events(Request $request)
-    {
-        $events = Event::all(); // Fetch all events from the database
-
-        return view('event', compact('events'));
-    }
 }

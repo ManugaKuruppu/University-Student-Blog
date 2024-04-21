@@ -25,4 +25,15 @@ class AnswerController extends Controller
 
         return back()->with('status', 'Answer posted successfully!');
     }
+
+    public function destroy(Request $request, Answer $answer)
+    {
+        $this->authorize('delete', $answer);
+
+        // Delete the answer
+        $answer->delete();
+
+        // Redirect or return a response
+        return redirect()->back()->with('success', 'Answer deleted successfully');
+    }
 }

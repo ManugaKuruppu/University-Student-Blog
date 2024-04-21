@@ -6,6 +6,7 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Filament\Resources\PostResource\RelationManagers\CommentsRelationManager;
 use App\Models\Post;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
@@ -24,6 +25,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class PostResource extends Resource
 {
@@ -113,11 +115,35 @@ class PostResource extends Resource
         ];
     }
 
+//    public static function getEloquentQuery(): Builder
+//    {
+//        $query = parent::getEloquentQuery();
+//
+//        if(!Auth::User()->isAdmin()){
+//            $query->where('user_id', Auth::id());
+//        }
+//
+//        return $query;
+////        return parent::getEloquentQuery()
+////            ->withoutGlobalScopes([
+////                SoftDeletingScope::class,
+////            ]);
+//    }
+
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
+        $query = parent::getEloquentQuery();
+
+        // Check if the user is authenticated
+        if (Auth::check()) {
+            // Check if the authenticated user is not an admin
+            if (!Auth::user()->isAdmin()) {
+                // Modify the query to filter by user_id
+                $query->where('user_id', Auth::id());
+            }
+        }
+
+        return $query;
     }
+
 }

@@ -43,5 +43,14 @@ class DatabaseSeeder extends Seeder
              'academic_year' => 1,
              'role' => 'ADMIN'
          ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'Editor',
+            'email' => 'editor@editor.lk',
+            'password' => bcrypt('123456789'),
+            'department_id' => 1,
+            'academic_year' => 1,
+            'role' => 'EDITOR'
+        ]);
     }
 }

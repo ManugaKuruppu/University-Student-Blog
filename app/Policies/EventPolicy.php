@@ -29,7 +29,7 @@ class EventPolicy
      */
     public function create(User $user): bool
     {
-        return $user->isAdmin() || $user->isEditor() || $user->isSTUDENT() || $user->isSTUDENT();
+        return $user->isAdmin() || $user->isEditor();
     }
 
     /**
@@ -45,7 +45,7 @@ class EventPolicy
      */
     public function delete(User $user, Event $post): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isEditor();
     }
 
     /**
@@ -53,7 +53,7 @@ class EventPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isEditor();
     }
 
     /**
@@ -61,7 +61,7 @@ class EventPolicy
      */
     public function restore(User $user, Event $post): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isEditor();
     }
 
     /**
@@ -69,7 +69,7 @@ class EventPolicy
      */
     public function forceDelete(User $user, Event $post): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isEditor();
     }
 
     /**
@@ -77,7 +77,7 @@ class EventPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isEditor();
     }
 
     /**
@@ -85,6 +85,6 @@ class EventPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isEditor();
     }
 }
