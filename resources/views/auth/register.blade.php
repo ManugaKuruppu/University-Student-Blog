@@ -5,7 +5,7 @@
         </x-slot>
 
         <x-validation-errors class="mb-4" />
-
+{{--Displaying any validation errrors if have--}}
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -14,25 +14,29 @@
                 <x-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" required
                     autofocus autocomplete="name" />
             </div>
-
+{{--email validation --}}
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')"
                     required autocomplete="username" />
             </div>
 
+{{--Additional Fields displaying for the conditions based on the user input --}}
+{{-- If any user with a common mail identifying them as Alumni and ask for the NIC validation--}}
             <div class="mt-4" id="nicField" style="display: none;">
                 <x-label for="nic" value="{{ __('NIC Number') }}" />
                 <x-input id="nic" class="block mt-1 w-full" type="text" name="nic" :value="old('nic')" autocomplete="nic" />
             </div>
-
+{{--Students who entering their student mail identifying them as
+ students and requesting fields like School and the academic year --}}
             <div class="mt-4" id="schoolField" style="display: none;">
                 <x-label for="school" value="{{ __('School') }}" />
                 <select id="school_id" name="school_id" class="block mt-1 w-full">
                     <option value="">Select School</option>
                     <option value="School A">School A</option>
                     <option value="School B">School B</option>
-                    <!-- Add more options for other schools -->
+
+
                 </select>
             </div>
 
@@ -45,7 +49,7 @@
                     <option value="Level 6">Level 6</option>
                 </select>
             </div>
-
+{{--Identifying the staff and lecturers with apiit mail address--}}
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
                 <x-input id="password" class="block w-full mt-1" type="password" name="password" required
@@ -98,7 +102,7 @@
         </form>
     </x-authentication-card>
 
-    <!-- This script tag toggle the NIC number if the email template not correct-->
+    <!-- JavaScript to toggle fields based on email input -->
     <script>
         // Function to toggle NIC field visibility
         document.addEventListener("DOMContentLoaded", function() {

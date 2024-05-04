@@ -32,17 +32,13 @@ class EventPolicy
         return $user->isAdmin() || $user->isEditor();
     }
 
-    /**
-     * Determine whether the user can update the model.
-     */
+    /*** Determine whether the user can update the model.*/
     public function update(User $user, Event $post): bool
     {
         return $user->isAdmin() || $user->isEditor();
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     */
+    /*** Determine whether the user can delete the model.*/
     public function delete(User $user, Event $post): bool
     {
         return $user->isAdmin() || $user->isEditor();

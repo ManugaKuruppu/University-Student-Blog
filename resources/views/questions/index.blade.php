@@ -17,6 +17,7 @@
             cursor: pointer;
         }
     </style>
+
     <div class="container mx-auto mt-5 px-4 sm:px-6 lg:px-8">
         <div class="flex">
             <div class="w-full">

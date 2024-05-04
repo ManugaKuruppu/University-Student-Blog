@@ -19,7 +19,7 @@
 
         <div class="banner">
             <!-- Add your banner image here -->
-            <img src="{{ asset('img/dd.avif') }}" alt="background">
+            <img src="{{ asset('img/banner.png') }}" alt="background">
             <div class="animated-text">
                 <div class="apiit">APIIT</div>
                 <div class="blogs">Blogs</div>
