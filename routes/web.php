@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\JobController;
 use App\Filament\Resources\PostResource\Pages\CreatePost;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,10 @@ Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('
 Route::post('/questions/{question}/answers', [AnswerController::class, 'store'])->name('answers.store');
 
 Route::delete('answers/{answer}', [AnswerController::class, 'destroy'])->name('answers.destroy');
+
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+
+Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
 
 
 

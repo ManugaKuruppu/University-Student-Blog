@@ -33,6 +33,8 @@
 
     @include('layouts.partials.footer')
 
+    @livewire('chat-bot')
+
     @stack('modals')
     @livewireScripts
 </body>

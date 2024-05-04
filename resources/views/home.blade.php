@@ -110,6 +110,8 @@
         </div>
         <a class="block mt-10 text-lg font-semibold text-center text-yellow-500" href="{{ route('posts.index') }}">
             {{ __('home.more_posts') }}</a>
+
+        <livewire:chat-bot />
     </div>
 
     <!-- Owl Carousel JavaScript -->

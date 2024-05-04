@@ -6,6 +6,7 @@ return [
     'blog' => 'Blog',
     'event' => 'Event',
     'q&a' => 'Q&A',
+    'jobs' => 'jobs',
     'admin' => 'Admin',
     'profile' => 'Profile',
     'login' => 'Login',
