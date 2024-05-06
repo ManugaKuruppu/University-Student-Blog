@@ -36,6 +36,7 @@
     @livewire('chat-bot')
 
     @stack('modals')
+
     @livewireScripts
 </body>
 

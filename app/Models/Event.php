@@ -57,4 +57,9 @@ class Event extends Model
 
         return ($mins < 1) ? 1 : $mins;
     }
+
+//    public static function all()
+//    {
+//        return static::all();
+//    }
 }

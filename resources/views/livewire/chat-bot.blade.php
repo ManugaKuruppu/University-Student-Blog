@@ -1,82 +1,74 @@
 <?php
 
-namespace App\Http\Livewire;
-
-use Livewire\Component;
-use App\Models\Job;
+use function Livewire\Volt\{state, mount};
 use OpenAI\Laravel\Facades\OpenAI;
+use App\Models\Event;
 
-class ChatComponent extends Component
-{
-    public $toggleChat = true;
-    public $messages = [];
-    public $chat = [];
-    public $query = '';
+state([
+    'toggleChat' => false,
+    'messages' => [],
+    'chat' => [],
+    'query' => null,
+]);
 
-    public function mount()
-    {
-        // Code that runs when the component is mounted
+mount(function () {
+
+});
+
+$askQuestion = function () {
+
+    $this->messages[] = [
+        'role' => 'user',
+        'content' => $this->query
+    ];
+
+    $openai_query = "You are a call centre assistant working at APIIT University.";
+
+    // get all the products
+    $products = Event::all();
+
+    // loop through the products and add them to the openai query
+    foreach ($products as $product) {
+        $openai_query .= $product->name;
     }
 
-    public function askQuestion()
-    {
-        $this->messages[] = [
-            'role' => 'user',
-            'content' => $this->query
-        ];
+    $openai_query = $openai_query.' Q: '.$this->query;
 
-        $openai_query = "You are a call centre assistant working at APIIT University, Ask about Events, Blogs and Jobs.";
-        $jobs = Job::all();
+    $this->chat[] = [
+        'role' => 'user',
+        'content' => $openai_query
+    ];
 
-        foreach ($jobs as $job) {
-            $openai_query .= ' ' . $job->name;
+    $result = OpenAI::chat()->create([
+        'model' => 'gpt-3.5-turbo',
+        'messages' => $this->chat,
+    ]);
+
+    $this->query = null;
+
+    if(!empty($result->choices)){
+        // loop through the messages and add them to the messages array
+        foreach ($result->choices as $message) {
+            $this->messages[] = [
+                'role' => 'assistant',
+                'content' => $message->message->content,
+            ];
+
+            $this->chat[] = [
+                'role' => 'assistant',
+                'content' => $message->message->content,
+            ];
         }
-
-        $openai_query .= ' Q: ' . $this->query;
-
-        $this->chat[] = [
-            'role' => 'user',
-            'content' => $openai_query
-        ];
-
-        $result = OpenAI::chat()->create([
-            'model' => 'gpt-3.5-turbo',
-            'messages' => $this->chat,
-        ]);
-
-        $this->query = '';
-
-        if (!empty($result->choices)) {
-            foreach ($result->choices as $message) {
-                $this->messages[] = [
-                    'role' => 'assistant',
-                    'content' => $message->message->content,
-                ];
-
-                $this->chat[] = [
-                    'role' => 'assistant',
-                    'content' => $message->message->content,
-                ];
-            }
-        }
     }
-
-    public function render()
-    {
-        return view('livewire.chat-component');
-    }
-}
+};
 
 ?>
-
-
 
 <div x-data="{
     toggleChat : @entangle('toggleChat')
 }">
-
-    // tailwind chat window with chat icon
-    <div class="fixed bottom-10 right-10 z-50">
+{{--    // tailwind chat window with chat icon--}}
+    <div class="fixed bottom-10 left-10 z-50">
         <div class="flex flex-col items-end">
             <div class="flex items center">
                 <button x-on:click="toggleChat = !toggleChat"
@@ -106,5 +98,4 @@ class ChatComponent extends Component
             </div>
         </div>
     </div>
-
 </div>
