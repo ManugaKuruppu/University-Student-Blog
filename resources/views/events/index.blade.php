@@ -17,13 +17,16 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-12 mb-3">
+            <!-- Filters -->
+            <div class="col-md-4 mb-3">
                 <select id="departmentFilter" class="form-select">
                     <option value="">Select Department</option>
-                    <option value="1">Department 1</option>
-                    <option value="2">Department 2</option>
-                    <option value="3">Department 3</option>
+                    @foreach($departments as $department)
+                        <option value="{{ $department->id }}">{{ $department->name }}</option>
+                    @endforeach
                 </select>
+            </div>
+            <div class="col-md-4 mb-3">
                 <select id="yearFilter" class="form-select">
                     <option value="">Select Academic Year</option>
                     <option value="1">Year 1</option>
@@ -31,11 +34,22 @@
                     <option value="3">Year 3</option>
                 </select>
             </div>
+            <div class="col-md-4 mb-3">
+                <select id="clubFilter" class="form-select">
+                    <option value="">Select Club</option>
+                    @foreach($clubs as $club)
+                        <option value="{{ $club->id }}">{{ $club->club_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Event Calendar and Events List -->
             <div class="col-md-8">
                 <h2 class="text-center">Event Calendar</h2>
                 <div id="calendar"></div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
                 <h4>Events on Selected Day</h4>
                 <div id="event-list" class="list-group">
                     <!-- Event details will be listed here -->
@@ -43,6 +57,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Include necessary scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -52,6 +67,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var events = @json($events); // Assume this brings the initial array of events.
+
+            console.log(events);
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
@@ -63,7 +80,8 @@
                         extendedProps: {
                             body: event.body,
                             department_id: event.department_id,
-                            academic_year: event.academic_year
+                            academic_year: event.academic_year,
+                            club_name: event.club_id
                         }
                     };
                 }),
@@ -74,6 +92,7 @@
                         <p><strong>Event Details:</strong> ${info.event.extendedProps.body}</p>
                         <p><strong>Department:</strong> ${info.event.extendedProps.department_id}</p>
                         <p><strong>Academic Year:</strong> ${info.event.extendedProps.academic_year}</p>
+                        <p><strong>Club:</strong> ${info.event.extendedProps.club_name}</p>
                     `;
                 },
                 eventDidMount: function(info) {

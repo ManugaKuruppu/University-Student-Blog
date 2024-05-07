@@ -20,6 +20,7 @@ class Event extends Model
         'body',
         'published_at',
         'department_id',
+        'club_id',
         'academic_year'
     ];
 
@@ -32,6 +33,11 @@ class Event extends Model
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
     }
     public function year()
     {

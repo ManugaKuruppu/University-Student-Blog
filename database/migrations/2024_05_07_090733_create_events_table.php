@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('body');
             $table->foreignId('department_id');
             $table->tinyInteger('academic_year');
+            $table->foreignId('club_id')->nullable()->constrained('clubs');
 
             $table->timestamp('published_at')->nullable();
 

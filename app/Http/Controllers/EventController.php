@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\Club;
+use App\Models\Department;
 
 class EventController extends Controller
 {
@@ -49,13 +51,30 @@ class EventController extends Controller
 //        return response()->json($events);
 //    }
 
-    public function index()
+    public function index(Request $request)
     {
-        // Retrieve events from the database
-        $events = Event::all();
+        // Retrieve clubs from the database
+        $clubs = Club::all();
+        $departments = Department::all();
 
-        // Pass events data to the view
-        return view('events.index', compact('events'));
+        // Retrieve club ID from the request
+        $clubId = $request->query('club_id');
+
+        // Fetch events associated with the selected club ID
+        if ($clubId) {
+            $events = Event::where('club_id', $clubId)->get();
+        } else {
+            // If no club ID is provided, retrieve all events
+            $events = Event::all();
+        }
+
+        // Check if the request is expecting a JSON response
+        if ($request->expectsJson()) {
+            // Return events data as JSON
+            return response()->json($events);
+        }
+
+        // Pass events data and clubs data to the view
+        return view('events.index', compact('events', 'clubs', 'departments'));
     }
-
 }

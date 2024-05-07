@@ -65,6 +65,8 @@ class EventResource extends Resource
                                 3 => 'Third Year',
                             ])
                             ->searchable(),
+                        Select::make('club_id')
+                            ->relationship('club', 'club_name')
                     ]
                 ),
             ]);
