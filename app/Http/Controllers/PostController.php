@@ -14,19 +14,16 @@ class PostController extends Controller
 {
     public function index()
     {
+        // Fetch the latest posts immediately after creating a new one
+        $posts = Post::all();
 
-        $categories = Cache::remember('categories', now(), function () {
-            return Category::whereHas('posts', function ($query) {
-                $query->published();
-            })->take(10)->get();
-        });
+        // Cache the categories
+        $categories = Category::all();
 
-        return view(
-            'posts.index',
-            [
-                'categories' => $categories
-            ]
-        );
+        return view('posts.index', [
+            'posts' => $posts,
+            'categories' => $categories
+        ]);
     }
 
     public function show(Post $post)

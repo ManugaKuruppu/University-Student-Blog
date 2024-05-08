@@ -49,6 +49,7 @@ class PostList extends Component
     public function posts()
     {
         return Post::published()
+            ->whereNotNull('approved_at') // Only show posts with approved_at not null
             ->with('author', 'categories')
             ->when($this->activeCategory, function ($query) {
                 $query->withCategory($this->category);

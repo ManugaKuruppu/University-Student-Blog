@@ -72,7 +72,7 @@ $askQuestion = function () {
         <div class="flex flex-col items-end">
             <div class="flex items center">
                 <button x-on:click="toggleChat = !toggleChat"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style="background-color: blue">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"

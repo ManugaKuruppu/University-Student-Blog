@@ -8,9 +8,18 @@ use App\Models\Job;
 
 class JobController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = Job::all();
+        $jobs = Job::paginate(10);
+
+        if ($request->has('search')) {
+            $jobs = Job::where('title', 'like', '%' . $request->search . '%')
+                ->orWhere('description', 'like', '%' . $request->search . '%')
+                ->orWhere('type', 'like', '%' . $request->search . '%')
+                ->orWhere('location', 'like', '%' . $request->search . '%')
+                ->paginate(10);
+        }
+
         return view('jobs.index', compact('jobs'));
     }
 
