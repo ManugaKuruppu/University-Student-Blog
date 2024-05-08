@@ -7,6 +7,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\JobController;
 use App\Filament\Resources\PostResource\Pages\CreatePost;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,7 +49,7 @@ Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
 
 Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
 
-
+Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
 
 Route::get('/language/{locale}', function ($locale) {
