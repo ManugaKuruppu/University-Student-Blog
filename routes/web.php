@@ -49,7 +49,7 @@ Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
 
 Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
 
-Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+Route::get('/notifications', [NotificationController::class, 'navigation-menu'])->name('notifications.index');
 
 
 Route::get('/language/{locale}', function ($locale) {

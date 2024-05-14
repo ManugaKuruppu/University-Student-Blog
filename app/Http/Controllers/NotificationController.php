@@ -15,7 +15,7 @@ class NotificationController extends Controller
         $newEvents = Event::where('published_at', '>=', now()->subDays(7))->get();
 
         // Return the view with the new events
-        return view('notifications.index', compact('newEvents'));
+        return view('navigation-menu', ['newEvents' => $newEvents]);
     }
 }
 
