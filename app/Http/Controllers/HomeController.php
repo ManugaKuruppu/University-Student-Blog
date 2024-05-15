@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -23,9 +24,12 @@ class HomeController extends Controller
             return Post::published()->with('categories')->latest('published_at')->take(9)->get();
         });
 
+        $newEvents = Event::where('published_at', '>=', now()->subDays(7))->get();
+
         return view('home', [
             'featuredPosts' => $featuredPosts,
-            'latestPosts' => $latestPosts
+            'latestPosts' => $latestPosts,
+            'newEvents' => $newEvents
         ]);
     }
 }

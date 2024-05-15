@@ -33,6 +33,8 @@
 
     @include('layouts.partials.footer')
 
+    @livewire('notifications-component')
+
     @livewire('chat-bot')
 
     @stack('modals')
