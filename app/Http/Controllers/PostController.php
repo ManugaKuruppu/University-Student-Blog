@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Events\NewContentCreated;
 
 class PostController extends Controller
 {
@@ -72,6 +73,8 @@ class PostController extends Controller
         // Attach categories
         $post->categories()->sync($validated['categories']);
 
+        event(new NewContentCreated($post->body));
+
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
 
@@ -95,4 +98,9 @@ class PostController extends Controller
 
         return view('posts.create', compact('users', 'categories'));
     }
+
+//    public function notifi(Request $request) {
+//
+//        // Any additional logic
+//    }
 }

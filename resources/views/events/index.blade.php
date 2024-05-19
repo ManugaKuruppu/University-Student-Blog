@@ -1,7 +1,7 @@
 <x-app-layout>
     <!-- Include necessary CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet" as="style" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" as="style"/>
     <style>
         /* Custom CSS for event body */
         .event-body {
@@ -64,11 +64,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
+        $(document).ready(function() {
+            var calendarEl = $('#calendar')[0]; // Select calendar element using jQuery
             var events = @json($events); // Assume this brings the initial array of events.
-
-            console.log(events);
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
@@ -86,14 +84,14 @@
                     };
                 }),
                 eventClick: function(info) {
-                    var eventDetails = document.getElementById('event-list');
-                    eventDetails.innerHTML = `
-                        <h5>${info.event.title}</h5>
-                        <p><strong>Event Details:</strong> ${info.event.extendedProps.body}</p>
-                        <p><strong>Department:</strong> ${info.event.extendedProps.department_id}</p>
-                        <p><strong>Academic Year:</strong> ${info.event.extendedProps.academic_year}</p>
-                        <p><strong>Club:</strong> ${info.event.extendedProps.club_name}</p>
-                    `;
+                    var eventDetails = $('#event-list');
+                    eventDetails.html(`
+                    <h5>${info.event.title}</h5>
+                    <p><strong>Event Details:</strong> ${info.event.extendedProps.body}</p>
+                    <p><strong>Department:</strong> ${info.event.extendedProps.department_id}</p>
+                    <p><strong>Academic Year:</strong> ${info.event.extendedProps.academic_year}</p>
+                    <p><strong>Club:</strong> ${info.event.extendedProps.club_name}</p>
+                `);
                 },
                 eventDidMount: function(info) {
                     var bodyEl = document.createElement('div');
@@ -105,6 +103,5 @@
 
             calendar.render();
         });
-
     </script>
 </x-app-layout>

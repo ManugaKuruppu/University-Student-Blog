@@ -15,19 +15,19 @@ class DatabaseSeeder extends Seeder
     {
 
         (new Department())->create([
-            'name' => 'Department 1',
+            'name' => 'Law School',
             'sort_order' => 1,
             'status' => 1,
         ]);
 
         (new Department())->create([
-            'name' => 'Department 2',
+            'name' => 'Business School',
             'sort_order' => 1,
             'status' => 1,
         ]);
 
         (new Department())->create([
-            'name' => 'Department 3',
+            'name' => 'Computing School',
             'sort_order' => 1,
             'status' => 1,
         ]);

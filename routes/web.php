@@ -31,7 +31,7 @@ Route::get('/posts/make', [PostController::class, 'make'])->name('posts.make');
 
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
-Route::get('/events', [EventController::class, 'index'])->name('event.index');
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
 
@@ -48,8 +48,6 @@ Route::delete('answers/{answer}', [AnswerController::class, 'destroy'])->name('a
 Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
 
 Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
-
-Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
 
 Route::get('/language/{locale}', function ($locale) {

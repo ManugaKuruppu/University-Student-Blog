@@ -68,7 +68,7 @@ $askQuestion = function () {
     toggleChat : @entangle('toggleChat')
 }">
 {{--    // tailwind chat window with chat icon--}}
-    <div class="fixed bottom-10 left-10 z-50">
+    <div class="fixed bottom-10 right-10 z-50">
         <div class="flex flex-col items-end">
             <div class="flex items center">
                 <button x-on:click="toggleChat = !toggleChat"

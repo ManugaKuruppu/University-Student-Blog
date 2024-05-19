@@ -30,7 +30,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'nic' => ['nullable', 'string', 'max:12', Rule::requiredIf(!Str::endsWith(strtolower($input['email']), ['students.apiit.lk', 'apiit.lk']))],
             'school_id' => ['nullable', 'required_if:email,students.apiit.lk', 'string', 'max:255'],
-            'year_id' => ['nullable', 'required_if:email,students.apiit.lk', 'string', 'in:Level 4,Level 5,Level 6'],
+            'year_id' => ['nullable', 'required_if:email,students.apiit.lk', 'string', 'in:1,2,3'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
@@ -41,8 +41,8 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'nic' => $input['nic'] ?? null,
-            'school_id' => $input['school_id'] ?? null,
-            'year_id' => $input['year_id'] ?? null,
+            'department_id' => $input['school_id'] ?? null,
+            'academic_year' => $input['year_id'] ?? null,
             'password' => Hash::make($input['password']),
             'role' => $role,
         ]);

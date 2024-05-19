@@ -53,28 +53,26 @@ class EventController extends Controller
 
     public function index(Request $request)
     {
-        // Retrieve clubs from the database
         $clubs = Club::all();
         $departments = Department::all();
+        $events = Event::query();
 
-        // Retrieve club ID from the request
-        $clubId = $request->query('club_id');
-
-        // Fetch events associated with the selected club ID
-        if ($clubId) {
-            $events = Event::where('club_id', $clubId)->get();
-        } else {
-            // If no club ID is provided, retrieve all events
-            $events = Event::all();
+        if ($request->filled('club_id')) {
+            $events->where('club_id', $request->input('club_id'));
         }
 
-        // Check if the request is expecting a JSON response
+        $events = $events->get();
+
         if ($request->expectsJson()) {
-            // Return events data as JSON
             return response()->json($events);
         }
 
-        // Pass events data and clubs data to the view
         return view('events.index', compact('events', 'clubs', 'departments'));
+    }
+
+    public function store(Request $request) {
+        $event = Event::create($request->all());
+        event(new NewContentCreated($event));
+        // Any additional logic
     }
 }
