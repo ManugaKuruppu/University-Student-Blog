@@ -29,6 +29,7 @@
                     <p>{{ Str::limit($job->description, 150) }}</p>
                     <p>Type: {{ $job->type }}</p>
                     <p>Location: {{ $job->location }}</p>
+                    <p>Duration: {{ $job->duration }}</p>
                 </div>
             </div>
         @endforeach

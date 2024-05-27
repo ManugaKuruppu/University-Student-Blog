@@ -16,6 +16,7 @@ class Job extends Model
         'description',
         'type',
         'location',
+        'duration',
         'cover_image',
         'email',
     ];

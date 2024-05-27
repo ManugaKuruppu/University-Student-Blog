@@ -29,6 +29,7 @@ class JobResource extends Resource
             Forms\Components\Textarea::make('description')->required(),
             Forms\Components\TextInput::make('type')->required(),
             Forms\Components\TextInput::make('location')->required(),
+            Forms\Components\TextInput::make('duration')->required(),
             Forms\Components\TextInput::make('email')->required(),
             FileUpload::make('cover_image')
                 ->image()
@@ -43,6 +44,7 @@ class JobResource extends Resource
             Tables\Columns\TextColumn::make('title'),
             Tables\Columns\TextColumn::make('type'),
             Tables\Columns\TextColumn::make('location'),
+            Tables\Columns\TextColumn::make('duration'),
             Tables\Columns\TextColumn::make('created_at')->dateTime(),
         ])->filters([
             Tables\Filters\TrashedFilter::make(),

@@ -18,7 +18,11 @@ return new class extends Migration
             $table->string('type');
             $table->string('location');
             $table->string('email');
+            $table->string('duration');
             $table->timestamps();
+            $table->string('cover_image')->nullable();
+            $table->softDeletes();
+
         });
 
     }
