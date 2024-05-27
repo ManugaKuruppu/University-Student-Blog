@@ -43,14 +43,14 @@
                             <label for="featured" class="form-check-label">Featured</label>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="user_id" class="form-label">Author</label>
-                            <select name="user_id" id="user_id" class="form-select">
-                                @foreach($users as $user)
-                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+{{--                        <div class="mb-3">--}}
+{{--                            <label for="user_id" class="form-label">Author</label>--}}
+{{--                            <select name="user_id" id="user_id" class="form-select">--}}
+{{--                                @foreach($users as $user)--}}
+{{--                                    <option value="{{ $user->id }}">{{ $user->name }}</option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
 
                         <div class="mb-3">
                             <label for="categories" class="form-label">Categories</label>

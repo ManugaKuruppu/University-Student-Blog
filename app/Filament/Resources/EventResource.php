@@ -52,6 +52,7 @@ class EventResource extends Resource
                 )->columns(2),
                 Section::make('Meta')->schema(
                     [
+                        FileUpload::make('image')->image()->directory('events/thumbnails'),
                         DateTimePicker::make('published_at')->nullable(),
                         Select::make('department_id')
                             ->relationship('department', 'name')
@@ -76,9 +77,10 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('image'),
                 TextColumn::make('title')->sortable()->searchable(),
-                TextColumn::make('school.school_id')->sortable()->searchable(),
-                TextColumn::make('year.year')->sortable()->searchable(),
+                TextColumn::make('department_id')->sortable()->searchable(),
+                TextColumn::make('academic_year')->sortable()->searchable(),
                 TextColumn::make('published_at')->date('Y-m-d')->sortable()->searchable(),
             ])
             ->filters([

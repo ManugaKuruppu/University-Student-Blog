@@ -45,7 +45,6 @@ class PostController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'published_at' => 'nullable|date',
             'featured' => 'boolean',
-            'user_id' => 'required|exists:users,id',
             'categories' => 'required|array',
             'categories.*' => 'exists:categories,id',
         ]);
@@ -66,14 +65,14 @@ class PostController extends Controller
         $post->image = $imagePath;
         $post->published_at = $validated['published_at'];
         $post->featured = $validated['featured'] ?? false;
-        $post->user_id = $validated['user_id'];
+        $post->user_id = auth()->id();
         $post->slug = $uniqueSlug;
         $post->save();
 
         // Attach categories
         $post->categories()->sync($validated['categories']);
 
-        event(new NewContentCreated($post->body));
+        event(new NewContentCreated($post));
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }

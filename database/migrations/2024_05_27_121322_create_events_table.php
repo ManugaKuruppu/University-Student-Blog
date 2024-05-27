@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->text('body');
+            $table->string('image')->nullable();
             $table->foreignId('department_id');
             $table->tinyInteger('academic_year');
             $table->foreignId('club_id')->nullable()->constrained('clubs');

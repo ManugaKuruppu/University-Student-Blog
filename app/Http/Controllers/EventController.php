@@ -61,7 +61,17 @@ class EventController extends Controller
             $events->where('club_id', $request->input('club_id'));
         }
 
-        $events = $events->get();
+        $events = $events->get()->map(function ($event) {
+            return [
+                'title' => $event->title,
+                'published_at' => $event->published_at,
+                'body' => $event->body,
+                'department_id' => $event->department_id,
+                'academic_year' => $event->academic_year,
+                'club_id' => $event->club_id,
+                'image' => $event->getThumbnailUrl(), // Add the full image URL here
+            ];
+        });
 
         if ($request->expectsJson()) {
             return response()->json($events);

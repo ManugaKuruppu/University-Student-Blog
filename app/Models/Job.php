@@ -16,7 +16,8 @@ class Job extends Model
         'description',
         'type',
         'location',
-        'cover_image'
+        'cover_image',
+        'email',
     ];
 
     public function getCoverImageUrlAttribute()

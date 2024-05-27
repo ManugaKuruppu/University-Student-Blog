@@ -1,6 +1,12 @@
-<div class="mb-5">
-    <x-button id="createBlogButton">{{ __('Create Blog') }}</x-button>
-</div>
+@auth
+    <div class="mb-5">
+        <x-button id="createBlogButton">{{ __('Create Blog') }}</x-button>
+    </div>
+@else
+    <div class="mb-5">
+        <x-button id="loginButton">{{ __('Please log in to create a blog.') }}</x-button>
+    </div>
+@endauth
 
 <script>
     // Get the button element by its ID

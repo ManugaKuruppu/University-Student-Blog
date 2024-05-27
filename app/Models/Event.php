@@ -18,6 +18,7 @@ class Event extends Model
     protected $fillable = [
         'title',
         'body',
+        'image',
         'published_at',
         'department_id',
         'club_id',
@@ -62,6 +63,13 @@ class Event extends Model
         $mins = round(str_word_count($this->body) / 250);
 
         return ($mins < 1) ? 1 : $mins;
+    }
+
+    public function getThumbnailUrl()
+    {
+        $isUrl = str_contains($this->image, 'http');
+
+        return ($isUrl) ? $this->image : Storage::disk('public')->url($this->image);
     }
 
 //    public static function all()

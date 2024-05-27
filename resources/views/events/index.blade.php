@@ -76,6 +76,7 @@
                         start: event.published_at,
                         allDay: true,
                         extendedProps: {
+                            image: event.image,
                             body: event.body,
                             department_id: event.department_id,
                             academic_year: event.academic_year,
@@ -87,6 +88,7 @@
                     var eventDetails = $('#event-list');
                     eventDetails.html(`
                     <h5>${info.event.title}</h5>
+                    <img src="${info.event.extendedProps.image}" alt="Event Image">
                     <p><strong>Event Details:</strong> ${info.event.extendedProps.body}</p>
                     <p><strong>Department:</strong> ${info.event.extendedProps.department_id}</p>
                     <p><strong>Academic Year:</strong> ${info.event.extendedProps.academic_year}</p>

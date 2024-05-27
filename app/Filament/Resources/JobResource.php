@@ -29,6 +29,7 @@ class JobResource extends Resource
             Forms\Components\Textarea::make('description')->required(),
             Forms\Components\TextInput::make('type')->required(),
             Forms\Components\TextInput::make('location')->required(),
+            Forms\Components\TextInput::make('email')->required(),
             FileUpload::make('cover_image')
                 ->image()
                 ->directory('jobs')
