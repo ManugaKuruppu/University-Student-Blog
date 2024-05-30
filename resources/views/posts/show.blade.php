@@ -56,6 +56,7 @@
             <livewire:post-comments :key="'comments' . $post->id" :$post />
         </article>
     </div>
+
     <script>
         document.getElementById('menu-toggle').addEventListener('click', function () {
             var menu = document.getElementById('menu');

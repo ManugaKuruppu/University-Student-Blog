@@ -108,6 +108,39 @@
 
     </div>
 
+
+{{--    <section class="blog-section">--}}
+{{--        <div class="blog-box">--}}
+{{--            <div class="icon-container">--}}
+{{--                <i class="fas fa-pencil-alt"></i>--}}
+{{--            </div>--}}
+{{--            <h3>Who can post?</h3>--}}
+{{--            <p>Anyone with a passion for writing and sharing their thoughts can contribute to our blog.</p>--}}
+{{--        </div>--}}
+{{--        <div class="blog-box">--}}
+{{--            <div class="icon-container">--}}
+{{--                <i class="fas fa-calendar-alt"></i>--}}
+{{--            </div>--}}
+{{--            <h3>Get updated for the Events</h3>--}}
+{{--            <p>Stay informed about the latest events and happenings within our community.</p>--}}
+{{--        </div>--}}
+{{--        <div class="blog-box">--}}
+{{--            <div class="icon-container">--}}
+{{--                <i class="fas fa-question-circle"></i>--}}
+{{--            </div>--}}
+{{--            <h3>Have any Questions?</h3>--}}
+{{--            <p>Reach out to us with any inquiries you might have, and we'll get back to you promptly.</p>--}}
+{{--        </div>--}}
+{{--        <div class="blog-box">--}}
+{{--            <div class="icon-container">--}}
+{{--                <i class="fas fa-briefcase"></i>--}}
+{{--            </div>--}}
+{{--            <h3>Opportunities await you!</h3>--}}
+{{--            <p>Discover exciting opportunities and take the next step in your career with our resources.</p>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+
+
     <!-- Owl Carousel JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>

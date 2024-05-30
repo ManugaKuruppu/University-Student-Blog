@@ -177,3 +177,53 @@ input:checked + label .description {
         text-shadow: 0 0 20px rgba(0, 168, 209, 0.8);
     }
 }
+.blog-section {
+    display: flex; /* Remove display: flex; */
+    flex-wrap: wrap; /* Remove flex-wrap: wrap; */
+    justify-content: center; /* Center horizontally */
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+    flex-direction: column; /* Add flex-direction: column; to stack items vertically */
+    align-items: center; /* Center items vertically */
+}
+
+
+.blog-box {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    background: #ffffff;
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.icon-container {
+    font-size: 3em;
+    color: #e74c3c; /* Red color for the icons */
+    margin-bottom: 10px;
+}
+
+.blog-box h3 {
+    color: #2c3e50; /* Dark ocean blue for headings */
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.blog-box p {
+    color: #7f8c8d; /* Grey color for text */
+    font-size: 1em;
+}
+
+/* Add Font Awesome for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');

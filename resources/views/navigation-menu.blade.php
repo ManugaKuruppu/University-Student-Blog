@@ -1,11 +1,12 @@
-<!-- navigation-menu.blade.php -->
 <div>
     <nav class="flex items-center justify-between px-6 py-3 border-b border-gray-100">
         <div id="nav-left" class="flex items-center">
             <a href="{{ route('home') }}">
                 <x-application-mark />
             </a>
-            <div class="ml-10 top-menu hidden md:flex md:space-x-4">
+        </div>
+        <div id="nav-middle" class="flex-grow flex justify-center">
+            <div class="flex items-center space-x-4">
                 <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                     {{ __('menu.home') }}
                 </x-nav-link>
@@ -21,7 +22,7 @@
                 @auth
                     @if(auth()->user()->academic_year >= 2)
                         <x-nav-link href="{{ route('jobs.index') }}" :active="request()->routeIs('jobs.index')">
-                            {{ __('menu.jobs') }}
+                            {{ __('Internships') }}
                         </x-nav-link>
                     @endif
                 @endauth
@@ -70,7 +71,7 @@
                 @auth
                     @if(auth()->user()->academic_year >= 5)
                         <x-nav-link href="{{ route('jobs.index') }}" :active="request()->routeIs('jobs.index')" class="text-white">
-                            {{ __('menu.jobs') }}
+                            {{ __('Internships') }}
                         </x-nav-link>
                     @endif
                 @endauth
