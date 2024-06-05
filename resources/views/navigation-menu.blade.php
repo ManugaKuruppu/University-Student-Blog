@@ -5,7 +5,7 @@
                 <x-application-mark />
             </a>
         </div>
-        <div id="nav-middle" class="flex-grow flex justify-center">
+        <div id="nav-middle" class="flex-grow flex justify-center" style="font-size: 25px;  important">
             <div class="flex items-center space-x-4">
                 <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                     {{ __('menu.home') }}

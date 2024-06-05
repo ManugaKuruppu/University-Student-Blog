@@ -14,7 +14,7 @@
     @section('hero')
         <div class="banner">
             <!-- Add your banner image here -->
-            <img src="{{ asset('img/banner.png') }}" alt="background">
+            <img src="{{ asset('img/banner3.jpg') }}" alt="background">
             <div class="animated-text">
                 <div class="apiit">APIIT</div>
                 <div class="blogs">Blogs</div>
@@ -31,8 +31,8 @@
                     <div class="row">
                         <div class="icon">1</div>
                         <div class="description">
-                            <h4>Card 1</h4>
-                            <p>Description for card 1.</p>
+                            <h4>APIIT City Cmpus </h4>
+                            <p>388, Union Place, Colombo 2, Sri Lanka.</p>
                         </div>
                     </div>
                 </label>
@@ -41,8 +41,8 @@
                     <div class="row">
                         <div class="icon">2</div>
                         <div class="description">
-                            <h4>Card 2</h4>
-                            <p>Description for card 2.</p>
+                            <h4>APIIT Foundation Studies</h4>
+                            <p>DNo 278,Access Towers 2, Union Place,, Colombo 2.</p>
                         </div>
                     </div>
                 </label>
@@ -51,8 +51,8 @@
                     <div class="row">
                         <div class="icon">3</div>
                         <div class="description">
-                            <h4>Card 3</h4>
-                            <p>Description for card 3.</p>
+                            <h4>APIIT Kandy Campus</h4>
+                            <p>542 Peradeniya Rd, Kandy 20000</p>
                         </div>
                     </div>
                 </label>
@@ -61,8 +61,8 @@
                     <div class="row">
                         <div class="icon">4</div>
                         <div class="description">
-                            <h4>Card 4</h4>
-                            <p>Description for card 4.</p>
+                            <h4>APIIT City Campus </h4>
+                            <p>388, Union Place, Colombo 2, Sri Lanka.</p>
                         </div>
                     </div>
                 </label>
@@ -90,9 +90,9 @@
         </div>
 
         <a class="block mt-10 text-lg font-semibold text-center text-yellow-500" href="{{ route('posts.index') }}">
-            {{ __('home.more_posts') }}</a>
+            {{ __('explore more posts...') }}</a>
         <hr>
-
+<br><br><br>
         <h2 class="mt-16 mb-5 text-3xl font-bold text-yellow-500">{{ __('Latest Posts') }}</h2>
         <div class="w-full mb-5">
             <div class="owl-carousel owl-theme" data-slideby="3"> <!-- Set slideBy option to 3 -->
@@ -104,7 +104,7 @@
             </div>
         </div>
         <a class="block mt-10 text-lg font-semibold text-center text-yellow-500" href="{{ route('posts.index') }}">
-            {{ __('home.more_posts') }}</a>
+            {{ __('explore more posts...') }}</a>
 
     </div>
 

@@ -1,4 +1,5 @@
 <x-app-layout>
+{{--    <img src="{{ asset('img/event_banner.png') }}" alt="background">--}}
     <!-- Include necessary CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet" as="style" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" as="style"/>
